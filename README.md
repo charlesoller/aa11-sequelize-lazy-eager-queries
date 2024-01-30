@@ -157,3 +157,4 @@ You are now able to utilize lazy and eager loading of associated data with
 [band-musician-instrument-db-diagram-info]: https://appacademy-open-assets.s3.us-west-1.amazonaws.com/Modular-Curriculum/content/week-11/practices/band-musician-instrument-db-diagram-info.txt
 [hasMany-docs]: https://sequelize.org/master/class/src/associations/has-many.js~HasMany.html#instance-method-get
 [order-eager-docs]: https://sequelize.org/master/manual/eager-loading.html#ordering-eager-loaded-associations
+# queries-with-associations
