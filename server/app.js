@@ -40,13 +40,16 @@ app.get('/bands-lazy', async (req, res, next) => {
     const payload = [];
     for(let i = 0; i < allBands.length; i++){
         const band = allBands[i];
-        // Your code here 
+        // Your code here
+        const bandMembers = await band.getMusicians({ order: [ ['firstName'] ] });
+
         const bandData = {
             id: band.id,
             name: band.name,
             createdAt: band.createdAt,
             updatedAt: band.updatedAt,
-            // Your code here 
+            musicians: bandMembers
+            // Your code here
         };
         payload.push(bandData);
     }
@@ -56,7 +59,9 @@ app.get('/bands-lazy', async (req, res, next) => {
 // STEP 3: Eager loading all bands
 app.get('/bands-eager', async (req, res, next) => {
     const payload = await Band.findAll({
-        // Your code here 
+        // Your code here
+        include: { model: Musician, order: [[ 'firstName' ]] },
+        order: [[ 'name' ]]
     });
     res.json(payload);
 });
@@ -69,5 +74,5 @@ app.get('/', (req, res) => {
 });
 
 // Set port and listen for incoming requests - DO NOT MODIFY
-const port = 5000;
+const port = 8000;
 app.listen(port, () => console.log('Server is listening on port', port));
